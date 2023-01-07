@@ -1,0 +1,3 @@
+2023-01-07 19:12:52 >> back up new_file.txt is more recent. Please check.
+2023-01-07 19:12:52 >> back up log_updates.txt is more recent. Please check.
+2023-01-07 19:12:52 >> Back up Complete !

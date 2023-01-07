@@ -1,0 +1,311 @@
+updated 13.30
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_GB.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i7-2620M CPU @ 2.70GHz (206A7),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 5052819842 bytes (4819 MiB)
+
+Listing archive: /home/xubuntu/Downloads/OneDrive-2022-08-21.zip
+
+--
+Path = /home/xubuntu/Downloads/OneDrive-2022-08-21.zip
+Type = zip
+ERRORS:
+Headers Error
+Physical Size = 5052819842
+64-bit = +
+
+----------
+Path = 20220821_130620.mp4
+Folder = -
+Size = 185850131
+Packed Size = 185850131
+Modified = 2022-08-21 18:16:24
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 9F12E9E2
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_131356.mp4
+Folder = -
+Size = 170862766
+Packed Size = 170862766
+Modified = 2022-08-21 17:34:34
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = CF2FB9AB
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_134204.mp4
+Folder = -
+Size = 450869610
+Packed Size = 450869610
+Modified = 2022-08-21 16:29:32
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = FCA02699
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_134022.mp4
+Folder = -
+Size = 183959041
+Packed Size = 183959041
+Modified = 2022-08-21 16:35:32
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 200C1F7A
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_133603.mp4
+Folder = -
+Size = 452601038
+Packed Size = 452601038
+Modified = 2022-08-21 16:51:14
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = F553550B
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_133300.mp4
+Folder = -
+Size = 318319066
+Packed Size = 318319066
+Modified = 2022-08-21 17:02:28
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 7690D242
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_132632.mp4
+Folder = -
+Size = 651303967
+Packed Size = 651303967
+Modified = 2022-08-21 17:28:12
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 718D67B9
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_131704.mp4
+Folder = -
+Size = 445701005
+Packed Size = 445701005
+Modified = 2022-08-21 17:47:14
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 9455B0A4
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_131356 1.mp4
+Folder = -
+Size = 170862766
+Packed Size = 170862766
+Modified = 2022-08-21 17:52:30
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = CF2FB9AB
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_130815.mp4
+Folder = -
+Size = 531484060
+Packed Size = 531484060
+Modified = 2022-08-21 18:09:28
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 06A1D2E5
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_130620 1.mp4
+Folder = -
+Size = 185850131
+Packed Size = 185850131
+Modified = 2022-08-21 18:18:12
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 9F12E9E2
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_125944.mp4
+Folder = -
+Size = 586777436
+Packed Size = 586777436
+Modified = 2022-08-21 18:39:22
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 35B4BB75
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_124650.mp4
+Folder = -
+Size = 513270767
+Packed Size = 513270767
+Modified = 2022-08-21 18:55:52
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 003465DC
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_124449.mp4
+Folder = -
+Size = 194925679
+Packed Size = 194925679
+Modified = 2022-08-21 19:01:52
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 45A459A3
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_123259.jpg
+Folder = -
+Size = 2870511
+Packed Size = 2870511
+Modified = 2022-08-21 12:04:32
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 2D24CE48
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_123253.jpg
+Folder = -
+Size = 2543547
+Packed Size = 2543547
+Modified = 2022-08-21 12:04:22
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = 8AAD4EFD
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_123233.jpg
+Folder = -
+Size = 2418325
+Packed Size = 2418325
+Modified = 2022-08-21 12:04:16
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = FD7F5FD5
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+
+Path = 20220821_123227.jpg
+Folder = -
+Size = 2347382
+Packed Size = 2347382
+Modified = 2022-08-21 12:04:50
+Created = 
+Accessed = 
+Attributes = 
+Encrypted = -
+Comment = 
+CRC = C65F9246
+Method = Store
+Host OS = FAT
+Version = 20
+Volume Index = 0
+sadASASwfasdfds
+
+Errors: 1
+
+updated 1 jan later

@@ -1,0 +1,629 @@
+#:kivy 2.1.0
+#####################################
+# author: Steven Loyens             #
+# date created: 29 December 2022    #
+# versions:                         #
+# 1.0 - 29 December 2022            #
+#  initial version                  #
+#####################################
+
+# define template widgets
+# =========================
+<MyButton>:
+    font_size: 20
+    background_color: 0, 0, 0, 0
+    # when pressed, color is white (or black?)
+    background_normal: ""
+    canvas.before:
+        Color:
+            rgba: 0.35,0.35,0.35,1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [10]
+<HomeButton>:
+    font_size: 20
+    color: 1,1,1,1
+    background_color: 0,0,0,0
+    # to remove the black that mixes with your chosen colour
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: 0.35,0.35,0.35,1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+    on_release: self.to_home_screen()
+    text: 'Home'
+
+<ExitButton>:
+    font_size: 20
+    color: 1,1,1,1
+    background_color: 0,0,0,0
+    # to remove the black that mixes with your chosen colour
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: 1,0.15,0,1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+    text: 'Exit'
+    on_release: self.close_app()
+
+<ActionButton>:
+    font_size: 30
+    color: 1,1,1,1
+    background_color: 0,0,0,0
+    # _normal is when not pressed _down is when pressed
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: 0,1,0,0.5
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<MyLabel>:
+    # background color
+    #-----------------
+    #canvas.before:
+    #    Color:
+    #        rgba: 0,0.5,1,1
+    #    Rectangle:
+    #        pos: self.pos
+    #        size: self.size
+
+    # border
+    #---------------
+    #canvas.before:
+    #    Color:
+    #        rgba: .5, .5, .5, 1
+    #    Line:
+    #        width: 2
+    #        rectangle: self.x, self.y, self.width, self.height
+    # font name
+    #-----------
+    #font_name: 'DejaVuSans'
+    #font_name: 'Roboto-Bold'
+    #font_name: 'Roboto-Italic'
+    #font_name: 'Roboto-BoldItalic'
+    #font_name: 'Roboto-Regular'
+    font_name: 'RobotoMono-Regular'
+    #color: 0,0.6,1,1
+    color: 0,0,1,1
+
+<DirLabel>:
+    color: 1,1,1,1
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 1,1,1,1
+        Line:
+            width: 0.5
+            rectangle: self.x, self.y, self.width, self.height
+
+
+# define screens
+#==========================
+<WelcomeScreen>:
+    # Screen is organised as a GridLayout
+    # it has 2 subsections, each GridLayouts
+    # size_hint across these 3 adds up to 100
+    GridLayout:
+        cols: 1
+        GridLayout:
+            size_hint_y: 0.1
+            cols: 2
+            MyLabel:
+                color: 0,0.6,1,1
+                text: 'latest backup:'
+            MyLabel:
+                id: lbl_latest_backup_date
+                color: 0,0.6,1,1
+                text: root.get_most_recent_backup_date()
+        GridLayout:
+            size_hint_y: 0.9
+            cols: 1
+            padding: 20, 5
+            # buttons placed on a separate BoxLayout
+            # so they have their own background screen
+            # and are listed below each other as wanted (not overlapping)
+            BoxLayout:
+                # background color
+                canvas.before:
+                    Color:
+                        rgba: 0.65,0.65,0.65,1
+                    # don't forget to draw the rectangle that will take the colour
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        width: 0.5
+                        rectangle: self.x, self.y, self.width, self.height
+                size: self.parent.size
+                orientation: 'vertical'
+                padding: 20, 20
+                spacing: 5
+                MyButton:
+                    text: 'Take Back Up'
+                    on_release: root.take_backup()
+                MyButton:
+                    text: 'See Backup Log'
+                    on_release: root.see_log()
+                MyButton:
+                    text: 'Clear Backup Log'
+                    on_release: root.clear_log()
+                MyButton:
+                    text: 'Help'
+                    on_release: root.see_help()
+                MyButton:
+                    text: 'Close App'
+                    on_release: root.close_app()
+
+<DefaultScreen>:
+    GridLayout:
+        cols: 1
+        #to give the whole bit a background border
+        padding: 20,5
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.75,0.75,0.75,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 1,1,1,1
+                Line:
+                    width: 0.5
+                    rectangle: self.x, self.y, self.width, self.height
+            cols:1
+            padding: 5,5
+            spacing: 10
+            MyLabel:
+                size_hint_y: 0.2
+                text: 'Your Current Selection'
+            GridLayout:
+                size_hint_y: 0.2
+                cols: 2
+                MyLabel:
+                    size_hint_x: 0.2
+                    text: 'from:'
+                DirLabel:
+                    id: lbl_default_from
+                    size_hint_x: 0.8
+                    text: '<populate from dir_from>'
+            GridLayout:
+                size_hint_y: 0.2
+                cols: 2
+                MyLabel:
+                    size_hint_x: 0.2
+                    text: 'to:  '
+                DirLabel:
+                    id: lbl_default_to
+                    size_hint_x: 0.8
+                    text: '<populate from dir_to>'
+            GridLayout:
+                size_hint_y: 0.2
+                cols: 2
+                GridLayout:
+                    cols: 2
+                    width:self.parent.width
+                    # center button by using padding and spacing
+                    padding: 20, 0
+                    spacing: 20
+                    ActionButton:
+                        size_hint_x: 0.5
+                        text: 'Use Current Selection'
+                        on_release: root.use_current_selection(root)
+                    ActionButton:
+                        size_hint_x: 0.5
+                        text: 'Select New Folders'
+                        on_release: root.select_new_folders(root)
+            GridLayout:
+                size_hint_y: 0.175
+                cols: 2
+                # center button by using padding and spacing
+                padding: 20, 0
+                spacing: 20
+                HomeButton:
+                ExitButton:
+            GridLayout:
+                size_hint_y: 0.025
+                cols: 1
+                Label:
+                    text:''
+
+<SelectionScreen>:
+    GridLayout:
+        cols:1
+        padding: 20,5
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.75,0.75,0.75,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            cols: 1
+            GridLayout:
+                size_hint_y: 0.05
+                cols: 1
+                MyLabel:
+                    text: '>>> Select folder to BACK UP <<<' if root.name == 'selection_screen' else '>>> Select folder to SAVE TO <<<'
+
+            GridLayout:
+                size_hint_y: 0.30
+                cols: 1
+                # FileChooser goes in it's own BoxLayout
+                ScrollView:
+                    size: self.parent.size
+                    canvas.before:
+                        Color:
+                            rgba: 1,0,0,1
+                        Line:
+                            width: 2
+                            rectangle: self.x, self.y, self.width, self.height
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    padding: 20, 0
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        size: (self.parent.width- 5, self.parent.height - 5)
+                        # height: 200
+                        FileChooserIconView:
+                            id: file_chooser
+                            dirselect: True
+                            on_selection: root.FileChooser.select(*args, root=root)
+            GridLayout:
+                size_hint_y: 0.05
+                cols: 2
+                MyLabel:
+                    size_hint_x: 0.2
+                    text: 'from:' if root.name == 'selection_screen' else 'to:'
+                DirLabel:
+                    size_hint_x: 0.8
+                    id: from_label
+                    text: '<from directory>:' if root.name == 'selection_screen' else '<to directory>'
+            GridLayout:
+                size_hint_y: 0.1
+                cols: 1
+                padding: 150, 5
+                GridLayout:
+                    cols:1
+                    ActionButton:
+                        size_hint_x: 1
+                        on_release: root.FileChooser.confirm_selection(*args,root=root, from_or_to='from') if root.name == 'selection_screen' else root.FileChooser.confirm_selection(*args,root=root, from_or_to='to')
+                        text: 'Confirm Selection'
+            GridLayout:
+                size_hint_y: 0.05
+                cols: 2
+                # center button by using padding and spacing
+                padding: 20, 0
+                spacing: 20
+                HomeButton:
+                ExitButton:
+            GridLayout:
+                size_hint_y: 0.025
+                cols: 1
+                Label:
+                    text:''
+
+<ConfirmationScreen>:
+    GridLayout:
+        cols: 1
+        padding: 20,5
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.75,0.75,0.75,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            cols: 1
+            padding: 10,10
+            spacing: 10
+            MyLabel:
+                size_hint_y: 0.10
+                text: 'Please Confirm Your Selected Folders'
+            GridLayout:
+                size_hint_y: 0.1
+                cols: 2
+                MyLabel:
+                    size_hint_x: 0.15
+                    text: 'from:'
+                DirLabel:
+                    id: conf_from_label
+                    size_hint_x: 0.85
+                    font_size: '25sp'
+                    text: "temporary"
+            GridLayout:
+                size_hint_y: 0.1
+                cols: 2
+                MyLabel:
+                    size_hint_x: 0.15
+                    text: 'to:  '
+                DirLabel:
+                    id: conf_to_label
+                    size_hint_x: 0.85
+                    font_size: '25sp'
+                    text: 'temporary'
+            GridLayout:
+                size_hint_y: 0.10
+                cols: 1
+                padding: 150,0
+                ActionButton:
+                    size_hint_x: 1
+                    text: 'Click to Start Back Up'
+                    on_release: root.confirmed()
+            GridLayout:
+                size_hint_y: 0.05
+                cols: 2
+                # center button by using padding and spacing
+                padding: 20, 0
+                spacing: 20
+                HomeButton:
+                ExitButton:
+            GridLayout:
+                size_hint_y: 0.025
+                cols: 1
+                Label:
+                    text:''
+
+<ProgressScreen>:
+    GridLayout:
+        cols: 1
+        padding: 20, 5
+        spacing: 10
+        MyLabel:
+            size_hint_y: 0.1
+            text: 'Backing Up ....'
+        ScrollView:
+            do_scroll_x: True
+            do_scroll_y: True
+            canvas.before:
+                Color:
+                    rgba: 0.65, 0.65, 0.65, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 1,1,1,1
+                Line:
+                    width: 0.5
+                    rectangle: self.x, self.y, self.width+5, self.height
+            Label:
+                # without this size hint the scrolling doesn't work
+                # label needs to be linked to the size and position of the scrollview
+                size_hint_x: 1
+                size_hint_y: None
+                id: lbl_progress
+                multiline: True
+                color: 1,1,1,1
+                font_size: '15sp'
+                height: self.texture_size[1]
+                text: ""
+        GridLayout:
+            size_hint_y: 0.175
+            cols: 2
+            padding: 20,5
+            spacing: 20
+            HomeButton:
+            ExitButton:
+        GridLayout:
+            size_hint_y: 0.025
+            cols: 1
+            Label:
+                text:''
+
+<InfoScreen>:
+    GridLayout:
+        cols: 1
+        padding: 20, 5
+        GridLayout:
+            cols: 1
+            padding: 20, 5
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: 0.65, 0.65, 0.65, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 1,1,1,1
+                Line:
+                    width: 0.5
+                    rectangle: self.x, self.y, self.width, self.height
+            MyLabel:
+                size_hint_y: 0.1
+                color: 0,0,1,1
+                text: root.header_text
+            ScrollView:
+                do_scroll_y: True
+                do_scroll_x: True
+                bar_color: 0,0,1,1
+                bar_width: 5
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        width: 0.5
+                        rectangle: self.x, self.y, self.width, self.height
+                Label:
+                    id: lbl_info
+                    # the label is larger than the scroll view so i can scroll the
+                    # scroll view window over the label
+                    size_hint_y: root.size_hint_label_y
+                    size_hint_x: 1
+                    # adjust text size to size of the label, so the text fits
+                    #texture_size: self.size
+                    # that makes a short log very large font
+                    # it stretches the text over the label size
+                    texture_size_x: self.size[0]
+                    # adjust text size to size of the label, so the text fits
+                    text_size: self.size
+                    valign: 'top'
+                    #texture_size_y: 400
+                    text: root.label_text
+            GridLayout:
+                size_hint_y: 0.175
+                cols: 2
+                padding: 20,0
+                spacing: 20
+                HomeButton:
+                ExitButton:
+            GridLayout:
+                size_hint_y: 0.025
+                cols:1
+                Label:
+                    text: ''
+
+<InfoActionScreen>:
+    GridLayout:
+        cols: 1
+        padding: 20, 5
+        GridLayout:
+            cols: 1
+            padding: 20, 5
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: 0.65, 0.65, 0.65, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 1,1,1,1
+                Line:
+                    width: 0.5
+                    rectangle: self.x, self.y, self.width, self.height
+            MyLabel:
+                size_hint_y: 0.1
+                color: 0,0,1,1
+                text: root.header_text
+            Label:
+                id: lbl_action
+                size_hint_y: 0.5
+                size_hint_x: 1
+                # adjust text size to size of the label, so the text fits
+                texture_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        width: 0.5
+                        rectangle: self.x, self.y, self.width, self.height
+                text: root.label_text
+            RelativeLayout:
+                # use relative layout for centering
+                size: self.parent.size
+                size_hint_y: 0.2
+                size_hint_x: 1
+                ActionButton:
+                    # to fill the entire Grid
+                    #size: self.parent.size
+                    # to partially fill the grid
+                    width: self.parent.size[0] * 0.75
+                    height:  self.parent.size[1]
+                    pos_hint: {'center_x': 0.5}
+                    text: root.action_text
+                    on_release: root.action_click()
+            GridLayout:
+                size_hint_y: 0.175
+                cols: 2
+                padding: 20,0
+                spacing: 20
+                HomeButton:
+                ExitButton:
+            GridLayout:
+                size_hint_y: 0.025
+                cols:1
+                Label:
+                    text: ''
+
+# Root
+# ==========================
+GridLayout:
+    cols: 1
+    rows: 4
+    canvas.before:
+        Color:
+            rgba: 40/255, 40/255, 40/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    # GridLayout for column 1, row 1 - logo header
+    GridLayout:
+        # manage distribution of height amongst items on this level
+        # so these are the 4 GridLayouts, one for each row
+        size_hint_y: 0.20
+        cols: 1
+        Image:
+            source: 'files/Etsy Shop Banner.png'
+
+    # GridLayout for column 1, row 2 - Title
+    GridLayout:
+        size_hint_y: 0.1
+        cols: 2
+        MyLabel:
+            size_hint_x: 0.95
+            font_size: '45sp'
+            # overwrite the MyLabel font
+            font_name: 'Roboto-Bold'
+            color: 0,0.6,1,1
+            text: 'Simple Backup Solution'
+        Label:
+            size_hint_x: 0.05
+            font_size: '10sp'
+            color: 0,0.6,1,1
+            text: 'v1.0'
+
+    # GridLayout for column 1, row 3 - window for screen manager
+    GridLayout:
+        size_hint_y: 0.70
+        cols: 1
+        BoxLayout:
+            size_hint_y: 1
+            ScreenManager:
+                id: sm
+                WelcomeScreen:
+                    name: 'welcome_screen'
+                DefaultScreen:
+                    name: 'default_screen'
+                SelectionScreen:
+                    name: 'selection_screen'
+                SelectionScreen:
+                    name: 'selection_screen_to'
+                ConfirmationScreen:
+                    name: 'confirmation_screen'
+                ProgressScreen:
+                    name: 'progress_screen'
+                LogScreen:
+                    name: 'log_screen'
+                HelpScreen:
+                    name: 'help_screen'
+                ClearLogScreen:
+                    name: 'clear_log_screen'
+    # GridLayout for column 1, row 4 - footer
+    GridLayout:
+        size_hint_y: 0.05
+        cols: 1
+        MyLabel:
+            text: 'design by Steven Loyens, steven@scobas.co.uk'
+            # color: rgba
+            color: 0,0.5,1,1
+            # 0,0,0,1 = black
+
+

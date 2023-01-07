@@ -1,0 +1,263 @@
+updated 13.30
+
+Sat, 26 Feb 2022, 21:00
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+Sat, 05 Mar 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: Unable to initialise frontend: Dialog
+debconf: (Dialogue frontend will not work on a dumb terminal, an Emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: Unable to initialise frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: Unable to re-open stdin: 
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 12 Mar 2022, 21:00AsaSA
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 19 Mar 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 23 Apr 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 07 May 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 14 May 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 28 May 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 23 Jul 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 30 Jul 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: Unable to initialise frontend: Dialog
+debconf: (Dialogue frontend will not work on a dumb terminal, an Emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: Unable to initialise frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: Unable to re-open stdin: 
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 06 Aug 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 13 Aug 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 20 Aug 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 10 Sep 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 24 Sep 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 08 Oct 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 22 Oct 2022, 20:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 05 Nov 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 19 Nov 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 26 Nov 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: Unable to initialise frontend: Dialog
+debconf: (Dialogue frontend will not work on a dumb terminal, an Emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: Unable to initialise frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: Unable to re-open stdin: 
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 03 Dec 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: Unable to initialise frontend: Dialog
+debconf: (Dialogue frontend will not work on a dumb terminal, an Emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: Unable to initialise frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: Unable to re-open stdin: 
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 10 Dec 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: Unable to initialise frontend: Dialog
+debconf: (Dialogue frontend will not work on a dumb terminal, an Emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: Unable to initialise frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: Unable to re-open stdin: 
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Sat, 17 Dec 2022, 21:00
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+changed on 24 december 2022

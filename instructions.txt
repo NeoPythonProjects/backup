@@ -1,0 +1,89 @@
+Welcome to our Simple Back Up Solutions.
+
+What does it do?
+================
+This is a very simple and basic app that allows you to
+select
+(i) Source Folder: a folder that you want to back up (take a copy of), and
+(ii) Backup Folder: the folder that you want to save the copy to
+
+(i) New files: The app will copy new files from the Source Folder onto the
+Backup Folder.
+(ii) Existing files: The app will look at the files on both the Source and
+the Backup Folder and will work out whether there are files in your Source
+Folder that are more recent than their version in the Backup Folder. If so,
+it will back up the more recent version from your Source Folder onto your
+Backup Folder.
+
+*************
+* IMPORTANT *
+*************
+This will delete the old version in your Backup Folder. If you don't want
+to delete the older version in your Backup Folder you need to RENAME either
+the more recent file in your Source Folder or the old version in your
+Backup Folder. That way, the app considers these different files and will
+copy the more recent file from the Source Folder onto the Backup Folder
+as a new file.
+For example, MyLetter.txt is a file that exists on both your Source and
+Backup Folders. Comparing the date on which both files were last modified
+the app sees that MyLetter.txt was updated more recently in the Source Folder
+and that therefore a backup needs to be performed. It will therefore replace
+MyLetter.txt on the Backup folder (the older version) with the new version
+from the Source Folder, so that both Folders now have the more recent version,
+or in other words, your most recent version is backed up on the Backup Folder.
+Crucially, the older version that used to sit on the Backup Folder has been
+replaced, so the older version has been deleted.
+If you want to preserve the older version you need to rename either the more
+recent version in the Source Folder or the older version in the Backup Folder
+BEFORE PERFORMING THE BACKUP, of course. For example, you could rename the older
+version in the Backup Folder to MyLetter_old_version.txt, or rename the more
+recent version to something useful such as MyLetter_20230105.txt referring to
+the date this letter was created or updated, iin this case 5 Jan 2023.
+(a small side note)
+Why did I use this weir format of the date? Because this date format also works
+alphabetically, meaning, in your folder, where files are shown in alphabetical
+order by default, files of an earlier date will show up at the top, because
+20221231 alphabetically comes before 20230105. This doesn't work if you use
+5 January 2023 and 31 December 2022.
+(end of side note)
+With your file now renamed, the app will consider this a new file and therefore
+doesn't delete the old version.
+
+How to use the app?
+===================
+
+Welcome Screen
+--------------
+Here we show the mos recent date when you last performed a backup. You should
+back up very regularly. With our little app you could easily do this every day.
+
+This screen gives you 5 options via 5 buttons:
+1. Take Back Up: click to go to the next step in the backup process: selecting
+the Source and Backup Folders
+2. See Backup Log: Check you entire back up history.
+3. Clear Backup Log: clear your log in case it gets too long
+4. Help: takes you to the help screen you're looking at now
+5. Close the app
+
+When selecting the first option, the app takes you through the following steps:
+
+Previous Selection Screen
+the from (=Source) and to (=Backup) folders that were chosen last time are shown
+here. Usually users backup the same folder over and over again. You can choose to
+'Use Current Selection' or 'Select New Folders'.
+If you select 'Use Current Selection' your backup will start and results will be
+shown until backup is complete. This ends the process.
+When you choose to 'Select New Folders', we go to the next step.
+
+Select Source Folder Screen
+Your folders appear. Select the folder you want to back up, i.e. your
+SOURCE FOLDER. You can double-click on the folders to go one level deeper.
+Then click 'Confirm Selection' to go to the next step.
+
+Select Backup Folder Screen
+Your folders appear again. Select the folder you want to back up TO, i.e. your
+BACKUP FOLDER. You can double-click on the folders to go one level deeper.
+Then click 'Confirm Selection' to go to the next step.
+Your backup will start and results will be shown until backup is complete.
+This ends the process.
+

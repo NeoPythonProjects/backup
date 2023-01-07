@@ -1,0 +1,10 @@
+update pip and setuptools (and virtual environment if you create that environment manually)
+python3 -m pip install --upgrade pip setuptools virtualenv
+
+Activate venv
+xubuntu@xubuntu-Lenovo-G770:~/PycharmProjects/backup$ source venv/bin/activate
+(venv) xubuntu@xubuntu-Lenovo-G770:~/PycharmProjects/backup$
+
+install Kivy in venv
+python3 -m pip install "kivy[base]"
+
