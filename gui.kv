@@ -260,6 +260,7 @@
                 size_hint_y: 0.05
                 cols: 1
                 MyLabel:
+                    # can be done as in info screen if there are more than 2 children
                     text: '>>> Select folder to BACK UP <<<' if root.name == 'selection_screen' else '>>> Select folder to SAVE TO <<<'
 
             GridLayout:
@@ -571,7 +572,7 @@ GridLayout:
         size_hint_y: 0.20
         cols: 1
         Image:
-            source: 'files/Etsy Shop Banner.png'
+            source: app.resource_path('files/Etsy Shop Banner.png')
 
     # GridLayout for column 1, row 2 - Title
     GridLayout:

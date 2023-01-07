@@ -179,7 +179,7 @@ class LogScreen(InfoScreen):
     def update_label(self, *args):
         with open(BackupApp.resource_path('backup_log.txt'), 'r') as f:
             log_content = f.read()
-        # to for the the label to update you need to call the ID
+        # for the label to update you need to call the ID
         # just using the assignment below doesn't work
         # self.label_text = log_content
         self.ids.lbl_info.text = log_content
