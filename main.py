@@ -4,10 +4,14 @@ from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.recycleview import RecycleView
 from kivy.core.text.markup import MarkupLabel
 from kivy.clock import Clock
 from kivy.properties import StringProperty
+from kivy.properties import ObjectProperty
+from kivy.utils import platform
 from backup_functions import start, log
+from random import randint
 
 # to create executable
 import os, sys
@@ -54,7 +58,88 @@ class DefaultScreen(Screen):
         root.manager.current = 'progress_screen'
 
     def select_new_folders(self, root):
-        root.manager.current = 'selection_screen'
+        root.manager.current = 'drive_selection_screen_from'
+
+
+class DriveSelector(RecycleView):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def switch_to_target_screen(self):
+        # which screen is the recycleview in?
+        # pass that value to parent_screen object
+        app = App.get_running_app()
+        sm = app.root.ids.sm
+        if "_from" in sm.current:
+            sm.current = 'selection_screen'
+            ss = app.root.ids.ss_from
+        else:
+            sm.current = 'selection_screen_to'
+            ss = app.root.ids.ss_from
+        return ss
+
+    def refresh_view(self):
+        # take out of init so we can call if via the kv id
+        # root_widget is set to self, so, the recycleview, so that we can link the
+        # recycleview buttons with a function in recycleview
+        self.data = [{'text': str(x), 'root_widget': self} for x in self.get_available_drives()]
+
+    def get_available_drives(self):
+        # for linux drives need to be mounted
+        # for Windows you need to get the logical drives
+        # TODO how does this work for MAC?
+        if platform == "win":
+            pass
+            drives = ['C:\\', 'D:\\']
+            return [x[:-1] for x in drives]
+        elif platform == 'linux':
+            # don't select a different filechooser path
+            # TODO; update the screen selection above to skip this screen for linux
+            # TODO: remove the below after testing
+            # drives = [f'{x}:\\' for x in range(randint(0, 10))]
+            drives = ['C:\\', 'D:\\']
+            return [x[:-1] for x in drives]
+        else:
+            print(f'update app for {platform}')
+            return []
+
+    def goToUpdate(self, text):
+        # I need to know which screen to go to
+        # that depends on where I am in the process
+        # so that's the page in which my recycleview sits
+        # change screen and capture new screen object
+        target_screen = self.switch_to_target_screen()
+        # change file chooser path in target screen
+        # file_chooser_obj is created in kv file
+        target_screen.file_chooser_obj.path = text
+        # TODO test this in Windows
+
+
+
+
+
+class SelectionRecycleView(Screen):
+    def __init__(self, *args, **kwargs):
+        super().__init__(**kwargs)
+        self.header_text = StringProperty('')
+
+    def on_enter(self, *args, **kwargs):
+        # on_enter of the SelectionRecycleView (not the RecycleView itself)
+        # we want to update the content of the RecycleView (connected drives)
+        self.ids.rv_drives.refresh_view()
+
+
+class DriveSelectionScreenFrom(SelectionRecycleView):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.header_text = "Select drive to backup FROM"
+
+
+class DriveSelectionScreenTo(SelectionRecycleView):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.header_text = 'Select drive to backup TO'
 
 
 class SelectionScreen(Screen):
@@ -121,7 +206,7 @@ class ProgressScreen(Screen):
 
     def on_enter(self):
         # in the background, run the update_label function every 1/100 seconds
-        self.progress_label_update = Clock.schedule_interval(self.update_label, 1/100)
+        self.progress_label_update = Clock.schedule_interval(self.update_label, 1 / 100)
         # for testing, stop the label update after 20 seconds
         # while testing schedule interval i'll stop the clock after 20 seconds
         # Clock.schedule_once(self.cancel_update_label, 20)
@@ -135,7 +220,7 @@ class ProgressScreen(Screen):
             source_dir = f.read()
         with open(BackupApp.resource_path('files/dir_to'), 'r') as f:
             destination_dir = f.read()
-        start(source_dir,  destination_dir)
+        start(source_dir, destination_dir)
         # Show 'backup complete'
         # log() updates the log, and the clock functions updates the label
         # via the update label function
@@ -174,7 +259,7 @@ class LogScreen(InfoScreen):
     def on_enter(self):
         # so that log refreshes even you have checked it before
         # in the background, run the update_label function every 1/100 seconds
-        Clock.schedule_interval(self.update_label, 1/100)
+        Clock.schedule_interval(self.update_label, 1 / 100)
 
     def update_label(self, *args):
         with open(BackupApp.resource_path('backup_log.txt'), 'r') as f:
@@ -281,6 +366,27 @@ class DirLabel(MyLabel):
 class MyButton(Button):
     pass
 
+
+class RecycleViewButton(MyButton):
+    """
+    Create a custom button to link to RecycleView function
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    root_widget = ObjectProperty()
+
+    def on_release(self, **kwargs):
+        # inherit all the parent's on_release, but then adjust
+        super().on_release(**kwargs)
+        # refer to function in recycleview
+        # we will need to set the root_widget to be the recycleview
+        # so that we can access a function in the recycleview
+        # this way, we can easily link this all together via the
+        # 'root_widget': self statement in the self.data statement
+        # of the recycleview
+        # the text on the button is the drive that I need
+        self.root_widget.goToUpdate(self.text)
 
 class HomeButton(Button):
     def to_home_screen(self):

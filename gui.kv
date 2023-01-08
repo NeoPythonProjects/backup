@@ -67,6 +67,8 @@
             pos: self.pos
             radius: [20]
 
+
+
 <MyLabel>:
     # background color
     #-----------------
@@ -244,7 +246,59 @@
                 Label:
                     text:''
 
+
+<DriveSelector>:
+    viewclass: 'RecycleViewButton'
+    RecycleBoxLayout:
+        padding: 30
+        spacing: 10
+        default_size: None, 100
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+
+
+<SelectionRecycleView>:
+    # to allow to update the DriveSelector(RecycleView)
+    # link between python class and kv file
+    # python variable in SelectionRecycleView: kv ID
+    # on_enter of the SelectionRecycleView (not the RecycleView itself)
+    # we want to update the content of the RecycleView (connected drives)
+    # check: because it works without this statement
+    # we weren't using drive_selector in the code
+    # drive_selector: rv_drives
+    GridLayout:
+        cols: 1
+        padding: 30,5
+        spacing: 20
+        MyLabel:
+            id: lbl_drives
+            size_hint_y: 0.1
+            size_hint_x: 1
+            text: root.header_text
+
+        DriveSelector:
+            id: rv_drives
+        GridLayout:
+            size_hint_y: 0.175
+            cols: 2
+            # center button by using padding and spacing
+            padding: 20, 0
+            spacing: 20
+            HomeButton:
+            ExitButton:
+        GridLayout:
+            size_hint_y: 0.025
+            cols: 1
+            Label:
+                text:''
+
 <SelectionScreen>:
+# make a file_chooser_obj available to the python SelectionScreen class
+# by linking it to a FileChooserIconView ID
+# access in SelectionScreen class via self.file_chooser_obj
+    file_chooser_obj:file_chooser
     GridLayout:
         cols:1
         padding: 20,5
@@ -603,9 +657,15 @@ GridLayout:
                     name: 'welcome_screen'
                 DefaultScreen:
                     name: 'default_screen'
+                DriveSelectionScreenFrom
+                    name: 'drive_selection_screen_from'
                 SelectionScreen:
+                    id: ss_from
                     name: 'selection_screen'
+                DriveSelectionScreenTo
+                    name: 'drive_selection_screen_to'
                 SelectionScreen:
+                    id: ss_to
                     name: 'selection_screen_to'
                 ConfirmationScreen:
                     name: 'confirmation_screen'

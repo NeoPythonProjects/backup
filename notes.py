@@ -2,6 +2,8 @@ import os
 import stat
 from time import ctime
 
+import platformdirs
+from kivy.utils import platform
 
 def test_last_modified():
     # Get last modification time of a file
@@ -26,4 +28,5 @@ def test_replace():
 
 
 if __name__ == '__main__':
-    print(test_last_modified())
+    print(platformdirs.PlatformDirs)
+    print(platform)
