@@ -5,7 +5,7 @@ import stat
 import time
 import datetime
 import filecmp
-
+from pathlib import Path
 import kivy
 
 def last_modified_string(filepath: str) -> str:
@@ -148,7 +148,9 @@ def replace_one_file(out_of_date_file_path: str, recent_file_path: str) -> None:
     # split results in tuple(head, tail)
     folder_to_check, filename = os.path.split(out_of_date_file_path)
     if not os.path.exists(folder_to_check):
-        os.mkdir(folder_to_check)
+        # os.mkdir(folder_to_check)
+        # create parent folders if they don't exist; loop doesn't follow top down tree structure
+        Path(folder_to_check).mkdir(parents=True)
     # the folder now exists, so open() will create the file if it doesn't exist
     with open(out_of_date_file_path, 'wb') as f_source:
         f_source.writelines(new_content)

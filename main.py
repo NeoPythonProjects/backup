@@ -20,7 +20,7 @@ from kivy.resources import resource_add_path, resource_find
 
 class WelcomeScreen(Screen):
     def get_most_recent_backup_date(self):
-        with open(BackupApp.resource_path('files/most_recent_backup.txt'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'most_recent_backup.txt')), 'r') as f:
             recent_datetime = f.read()
         return recent_datetime
         # on_enter these ids haven't been created yet
@@ -41,14 +41,18 @@ class WelcomeScreen(Screen):
 
     @staticmethod
     def close_app():
-        exit()
+        # don't use exit() in production code
+        # The exit() is defined in site.py and it works only if the site module is imported
+        # so it should be used in the interpreter only.
+        # https://www.geeksforgeeks.org/python-exit-commands-quit-exit-sys-exit-and-os-_exit/
+        sys.exit()
 
 
 class DefaultScreen(Screen):
     def on_enter(self):
-        with open(BackupApp.resource_path('files/dir_from'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_from')), 'r') as f:
             dir_from = f.read()
-        with open(BackupApp.resource_path('files/dir_to'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_to')), 'r') as f:
             dir_to = f.read()
         self.ids.lbl_default_from.text = dir_from
         self.ids.lbl_default_to.text = dir_to
@@ -76,7 +80,7 @@ class DriveSelector(RecycleView):
             ss = app.root.ids.ss_from
         else:
             sm.current = 'selection_screen_to'
-            ss = app.root.ids.ss_from
+            ss = app.root.ids.ss_to
         return ss
 
     def refresh_view(self):
@@ -90,9 +94,12 @@ class DriveSelector(RecycleView):
         # for Windows you need to get the logical drives
         # TODO how does this work for MAC?
         if platform == "win":
-            pass
-            drives = ['C:\\', 'D:\\']
-            return [x[:-1] for x in drives]
+            import win32api
+            drives = win32api.GetLogicalDriveStrings()
+            drives = drives.split('\000')[:-1]
+            # drives = ['C:\\', 'D:\\']
+            # return [x[:-1] for x in drives]
+            return drives
         elif platform == 'linux':
             # don't select a different filechooser path
             # TODO; update the screen selection above to skip this screen for linux
@@ -113,10 +120,6 @@ class DriveSelector(RecycleView):
         # change file chooser path in target screen
         # file_chooser_obj is created in kv file
         target_screen.file_chooser_obj.path = text
-        # TODO test this in Windows
-
-
-
 
 
 class SelectionRecycleView(Screen):
@@ -154,13 +157,13 @@ class SelectionScreen(Screen):
 
         def confirm_selection(self, *args, root, from_or_to):
             if from_or_to == 'from':
-                with open(BackupApp.resource_path('files/dir_from'), 'w') as f:
+                with open(BackupApp.resource_path(os.path.join('files', 'dir_from')), 'w') as f:
                     f.write(root.ids.from_label.text)
                 app = App.get_running_app()
                 sm = app.root.ids.sm
-                sm.current = 'selection_screen_to'
+                sm.current = 'drive selection_screen_to'
             elif from_or_to == 'to':
-                with open(BackupApp.resource_path('files/dir_to'), 'w') as f:
+                with open(BackupApp.resource_path(os.path.join('files', 'dir_to')), 'w') as f:
                     f.write(root.ids.from_label.text)
                 app = App.get_running_app()
                 sm = app.root.ids.sm
@@ -171,14 +174,14 @@ class SelectionScreen(Screen):
                 # root.ids.conf_from_label.text = 'test function'
                 # root.ids.conf_to_label.text = 'test function rr'
             else:
-                exit()
+                sys.exit()
 
 
 class ConfirmationScreen(Screen):
     def on_enter(self):
-        with open(BackupApp.resource_path('files/dir_from'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_from')), 'r') as f:
             dir_from = f.read()
-        with open(BackupApp.resource_path('files/dir_to'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_to')), 'r') as f:
             dir_to = f.read()
         self.ids.conf_from_label.text = dir_from
         self.ids.conf_to_label.text = dir_to
@@ -189,12 +192,12 @@ class ConfirmationScreen(Screen):
         sm.current = 'progress_screen'
 
     def get_from_dir(self):
-        with open(BackupApp.resource_path('files/dir_from'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_from')), 'r') as f:
             print(f.read())
             return f.read()
 
     def get_to_dir(self):
-        with open(BackupApp.resource_path('files/dir_to'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_to')), 'r') as f:
             print(f.read())
             return f.read()
 
@@ -205,8 +208,7 @@ class ProgressScreen(Screen):
         self.progress_label_update = None
 
     def on_enter(self):
-        # in the background, run the update_label function every 1/100 seconds
-        self.progress_label_update = Clock.schedule_interval(self.update_label, 1 / 100)
+        # in the background, run the update_label function every 1/2 seconds
         # for testing, stop the label update after 20 seconds
         # while testing schedule interval i'll stop the clock after 20 seconds
         # Clock.schedule_once(self.cancel_update_label, 20)
@@ -216,9 +218,9 @@ class ProgressScreen(Screen):
         # clear recent back up log
         with open(BackupApp.resource_path('backup_log_recent.txt'), 'w') as f:
             f.write('')
-        with open(BackupApp.resource_path('files/dir_from'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_from')), 'r') as f:
             source_dir = f.read()
-        with open(BackupApp.resource_path('files/dir_to'), 'r') as f:
+        with open(BackupApp.resource_path(os.path.join('files', 'dir_to')), 'r') as f:
             destination_dir = f.read()
         start(source_dir, destination_dir)
         # Show 'backup complete'
@@ -371,6 +373,7 @@ class RecycleViewButton(MyButton):
     """
     Create a custom button to link to RecycleView function
     """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -388,6 +391,7 @@ class RecycleViewButton(MyButton):
         # the text on the button is the drive that I need
         self.root_widget.goToUpdate(self.text)
 
+
 class HomeButton(Button):
     def to_home_screen(self):
         app = App.get_running_app()
@@ -397,7 +401,7 @@ class HomeButton(Button):
 
 class ExitButton(Button):
     def close_app(self):
-        exit()
+        sys.exit()
 
 
 class ActionButton(Button):
